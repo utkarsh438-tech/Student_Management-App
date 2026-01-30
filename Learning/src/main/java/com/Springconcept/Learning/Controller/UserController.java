@@ -2,6 +2,8 @@ package com.Springconcept.Learning.Controller;
 
 
 
+import com.Springconcept.Learning.Model.User;
+import com.Springconcept.Learning.Service.Imp.userservice;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,9 +13,9 @@ import java.util.Optional;
 @RequestMapping("/users")
 public class UserController {
 
-    private final UserService userService;
+    private final userservice userService;
 
-    public UserController(UserService userService) {
+    public UserController(userservice userService) {
         this.userService = userService;
     }
 
@@ -47,9 +49,5 @@ public class UserController {
         return userService.updateUser(id, user);
     }
 
-    // DELETE
-    @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Long id) {
-        userService.deleteUser(id);
-    }
+
 }
