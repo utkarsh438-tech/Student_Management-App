@@ -1,6 +1,6 @@
 package com.Springconcept.Learning.Service.Imp;
 
-import com.Springconcept.Learning.Model.User;
+import com.Springconcept.Learning.Model.Users;
 import com.Springconcept.Learning.Repository.UserRepo;
 import org.springframework.stereotype.Service;
 
@@ -13,22 +13,22 @@ public class userservice {
     public userservice(UserRepo userRepo) {
         this.userRepo = userRepo;
     } // CREATE
-public User createUser(User user) {
+public Users createUser(Users user) {
         return userRepo.save(user);
     } // READ - all users
- public List<User> getAllUsers() {
+ public List<Users> getAllUsers() {
         return userRepo.findAll();
     } // READ - by ID
- public Optional<User> getUserById(Long id) {
-        return userRepo.findById(id); }
+ public Optional<Users> getUserById(Long id) {
+        return userRepo.findById(String.valueOf(id)); }
 // READ - by name
-public User getUserByName(String name) {
+public Users getUserByName(String name) {
         return userRepo.findByName(name);
     } // UPDATE
- public User updateUser(Long id, User updatedUser) {
-        return userRepo.findById(id) .map(user -> {
+ public Users updateUser(Long id, Users updatedUser) {
+        return userRepo.findById(String.valueOf(id)) .map(user -> {
             user.setName(updatedUser.getName());
             user.setPassword(updatedUser.getPassword());
             user.setState(updatedUser.isState());
-            return userRepo.save(user); }) .orElseThrow(() -> new RuntimeException("User not found"));
+            return userRepo.save(user); }).orElseThrow(()-> new RuntimeException("User not found"));
  } }

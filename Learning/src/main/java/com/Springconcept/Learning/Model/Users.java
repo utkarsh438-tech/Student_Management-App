@@ -6,7 +6,7 @@ import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
 
 @Node
-public class User {
+public class Users {
 
     @Id
     @GeneratedValue
@@ -44,8 +44,8 @@ public class User {
     public boolean isState() {
         return state;
     }
-@Relationship(type = "Courses")
-private String courses;
+//@Relationship(type = "Courses")
+//private String courses;
     public void setState(boolean state) {
         this.state = state;
     }

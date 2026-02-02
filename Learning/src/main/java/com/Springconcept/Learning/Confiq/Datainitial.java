@@ -1,7 +1,6 @@
 package com.Springconcept.Learning.Confiq;
 
-import com.Springconcept.Learning.Controller.UserController;
-import com.Springconcept.Learning.Model.User;
+import com.Springconcept.Learning.Model.Users;
 import com.Springconcept.Learning.Repository.UserRepo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +12,7 @@ public class Datainitial {
 
         return (args) -> {
             if(!userRepo.existbyUsername("Admin")){
-                User user=new User();
+                Users user=new Users();
                 user.setName("Admin");
                 user.setPassword("admin");
                 user.setState(true);

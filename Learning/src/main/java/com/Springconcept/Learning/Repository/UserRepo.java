@@ -1,10 +1,14 @@
 package com.Springconcept.Learning.Repository;
 
-import com.Springconcept.Learning.Model.User;
+import com.Springconcept.Learning.Model.Users;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 
-public interface UserRepo extends Neo4jRepository<User, Long> {
-    User findByName(String name);
+import java.util.Optional;
+
+public interface UserRepo extends Neo4jRepository<Users, String> {
+    Users findByName(String name);
 boolean existbyUsername(String username);
+
+    Optional<Users> findByUsername(String name);
 }
 
