@@ -1,27 +1,36 @@
 package com.Springconcept.Learning.Model;
 
+import lombok.*;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
 
+import java.util.UUID;
+
 @Node
+@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Users {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private UUID id;
 
     private String name;
     private String password;
     private boolean state;
 
     // Getters and Setters
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

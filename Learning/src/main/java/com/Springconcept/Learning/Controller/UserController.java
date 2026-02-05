@@ -4,6 +4,7 @@ package com.Springconcept.Learning.Controller;
 
 import com.Springconcept.Learning.Model.Users;
 import com.Springconcept.Learning.Service.Imp.userservice;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,15 +13,15 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-
-    private final userservice userService;
-
-    public UserController(userservice userService) {
-        this.userService = userService;
-    }
+//    @Autowired
+//    private final userservice userService;
+//
+//    public UserController(userservice userService) {
+//        this.userService = userService;
+//    }
 
     // CREATE
-    @PostMapping
+    /*@PostMapping
     public Users addUser(@RequestBody Users user) {
         return userService.createUser(user);
     }
@@ -48,6 +49,6 @@ public class UserController {
     public Users updateUser(@PathVariable Long id, @RequestBody Users user) {
         return userService.updateUser(id, user);
     }
-
+*/
 
 }

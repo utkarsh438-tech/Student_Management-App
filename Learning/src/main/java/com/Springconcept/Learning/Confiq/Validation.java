@@ -19,7 +19,9 @@ private static final String[] AUTH_WHITELIST = {
         "/error"
 };
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(auth->auth.requestMatchers(AUTH_WHITELIST)
+
+        http.csrf(csrf -> csrf.disable())
+        .authorizeHttpRequests(auth->auth.requestMatchers(AUTH_WHITELIST)
                 .permitAll().anyRequest().authenticated())
                 .formLogin(form->form.loginPage("/login").loginProcessingUrl("/login")
                         .defaultSuccessUrl("/dashboard",true)
