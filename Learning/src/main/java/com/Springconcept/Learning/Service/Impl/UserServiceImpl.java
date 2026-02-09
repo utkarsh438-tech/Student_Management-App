@@ -1,4 +1,4 @@
-package com.Springconcept.Learning.Service.Imp;
+package com.Springconcept.Learning.Service.Impl;
 
 import com.Springconcept.Learning.Model.Users;
 import com.Springconcept.Learning.Repository.UserRepo;

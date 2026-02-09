@@ -2,13 +2,7 @@ package com.Springconcept.Learning.Controller;
 
 
 
-import com.Springconcept.Learning.Model.Users;
-import com.Springconcept.Learning.Service.Imp.userservice;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
