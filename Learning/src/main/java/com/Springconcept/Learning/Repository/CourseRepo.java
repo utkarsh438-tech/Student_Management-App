@@ -7,5 +7,5 @@ import java.util.UUID;
 
 public interface CourseRepo extends Neo4jRepository<Course, UUID> {
 
-
+boolean existsByCourseCodeIgnoreCase(String code);
 }

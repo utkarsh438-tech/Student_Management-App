@@ -8,7 +8,7 @@ import org.springframework.data.neo4j.core.schema.Relationship;
 
 import java.util.UUID;
 
-@Node
+@Node("User")
 @Data
 @Getter
 @Setter
@@ -21,7 +21,7 @@ public class Users {
     @GeneratedValue
     private UUID id;
 
-    private String name;
+    private String username;
     private String password;
     private boolean state;
 
@@ -34,12 +34,12 @@ public class Users {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

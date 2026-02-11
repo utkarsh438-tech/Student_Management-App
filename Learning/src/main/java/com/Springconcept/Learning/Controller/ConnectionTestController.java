@@ -1,0 +1,23 @@
+package com.Springconcept.Learning.Controller;
+
+
+
+import org.springframework.data.neo4j.core.Neo4jClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import lombok.RequiredArgsConstructor;
+
+@RestController
+@RequiredArgsConstructor
+public class ConnectionTestController {
+
+    private final Neo4jClient neo4jClient;
+
+    @GetMapping("/db-check")
+    public String checkConnection() {
+        return neo4jClient.query("RETURN 'Connected to Neo4j' AS result")
+                .fetchAs(String.class)
+                .one()
+                .orElse("Not connected");
+    }
+}

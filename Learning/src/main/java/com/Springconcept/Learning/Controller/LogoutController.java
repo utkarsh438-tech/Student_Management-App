@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class LogoutController {
-    @PostMapping("/logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session, Authentication authentication){
-        if(authentication!=null){
-            new SecurityContextLogoutHandler().logout(request, response,authentication);
-        }
-        return " Successfully logged out!";
-
-    }
+//    @PostMapping("/logout")
+//    public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session, Authentication authentication){
+//        if(authentication!=null){
+//            new SecurityContextLogoutHandler().logout(request, response,authentication);
+//        }
+//        return " Successfully logged out!";
+//
+//    }
 }
