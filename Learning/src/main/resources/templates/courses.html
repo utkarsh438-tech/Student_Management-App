@@ -15,15 +15,15 @@
 <body>
 <div class="d-flex" id="wrapper">
     <!-- Sidebar -->
-    <div class="bg-dark text-white" id="sidebar-wrapper">
-        <div class="sidebar-heading border-bottom border-secondary">
-            <i class="bi bi-mortarboard-fill me-2"></i> SMS Admin
-        </div>
+<!--    <div class="bg-dark text-white" id="sidebar-wrapper">-->
+<!--        <div class="sidebar-heading border-bottom border-secondary">-->
+<!--            <i class="bi bi-mortarboard-fill me-2"></i> SMS Admin-->
+<!--        </div>-->
         <div class="list-group list-group-flush">
             <a th:href="@{/dashboard}" class="sidebar-link">
                 <i class="bi bi-speedometer2"></i> Dashboard
             </a>
-            <a th:href="@{/course/new}" class="sidebar-link active">
+            <a th:href="@{/course/List}" class="sidebar-link active">
                 <i class="bi bi-book"></i> Courses
             </a>
             <a href="students.html" class="sidebar-link">
@@ -68,7 +68,7 @@
                 <a th:href="@{/course/new}" class="btn btn-primary"><i class="bi bi-plus-lg me-1"></i> Add New
                     Course</a>
             </div>
-            <div th:if="${message}" class="alert alert-danger text-center" role="alert" th:text="${message}"></div>
+            <div th:if="${message}" class="alert alert-success text-center" role="alert" th:text="${message}"></div>
             <div class="card mb-4">
                 <div class="card-header bg-white">
                     <i class="bi bi-table me-1"></i> Course List
@@ -93,7 +93,7 @@
                                 <td th:text="${course.courseCode}">Course Code</td>
                                 <td th:text="${course.fee}">Fee</td>
                                 <td th:text="${course.duration}">Duration</td>
-                                <td><a th:href="@{'/course/view/' + ${course.id}}"
+                                <td><a th:href="@{'/course/' + ${course.id}}"
                                        class="btn btn-sm btn-info text-white me-1" title="View"> <i
                                         class="bi bi-eye"></i> </a> <a th:href="@{'/course/edit/' + ${course.id}}"
                                                                        class="btn btn-sm btn-warning text-white me-1"
@@ -103,42 +103,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <nav aria-label="Course pagination">
-                        <ul class="pagination justify-content-end">
 
-                            <!-- Previous -->
-                            <li class="page-item">
-                                <a class="page-link" href="/courses?page=1&size=10">Previous</a>
-                            </li>
-
-                            <!-- Page numbers -->
-                            <li class="page-item">
-                                <a class="page-link" href="/courses?page=0&size=10">1</a>
-                            </li>
-
-                            <li class="page-item">
-                                <a class="page-link" href="/courses?page=1&size=10">2</a>
-                            </li>
-
-                            <li class="page-item active">
-                                <a class="page-link" href="/courses?page=2&size=10">3</a>
-                            </li>
-
-                            <li class="page-item">
-                                <a class="page-link" href="/courses?page=3&size=10">4</a>
-                            </li>
-
-                            <li class="page-item">
-                                <a class="page-link" href="/courses?page=4&size=10">5</a>
-                            </li>
-
-                            <!-- Next -->
-                            <li class="page-item">
-                                <a class="page-link" href="/courses?page=3&size=10">Next</a>
-                            </li>
-
-                        </ul>
-                    </nav>
                 </div>
             </div>
         </div>

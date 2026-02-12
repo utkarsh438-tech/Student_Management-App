@@ -8,11 +8,10 @@ import jakarta.validation.Valid;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/course")
@@ -38,6 +37,9 @@ public class CourseController {
     @GetMapping("/List")
     public String listCourses(Model model) {
         model.addAttribute("courses", courseService.getAllCourses());
+
+
+
         return "courses";  }
 
 
@@ -58,4 +60,38 @@ public class CourseController {
             return "redirect:/course/List";
         }
 
+
+
+        @GetMapping("/{id}")
+    public String getCourseById(@PathVariable UUID id, Model model) {
+        CourseDTO course=courseService.getCourseById(id);
+        model.addAttribute("course", course);
+return "view-course";
+        }
+@GetMapping ("/edit/{id}")
+    public String editCourse(@PathVariable UUID id, Model model) {
+    CourseDTO course=courseService.getCourseById(id);
+    model.addAttribute("courseDto", course);
+    return "edit-course";
+
+}
+@PostMapping("/update/{id}")
+public String updateCourse(@PathVariable UUID id, Model model , @Valid @ModelAttribute("courseDto") CourseDTO courseDTO, BindingResult
+        bindingResult , RedirectAttributes redirectAttributes ) {
+//        CourseDTO course=courseService.getCourseById(id);
+
+        if (bindingResult.hasErrors()) {
+            return "edit-course";
+        }
+        if (courseService.existsByCourseCodeAndIdNot(courseDTO.getCourseCode(),id)) {
+            bindingResult.rejectValue("courseCode", "error.courseCode.exist", "course code exist");
+            return "edit-course";
+        }
+        courseService.updateCourse(courseDTO,id);
+        redirectAttributes.addFlashAttribute("message", "Course created successfully");
+
+        return "redirect:/course/List";
     }
+}
+
+

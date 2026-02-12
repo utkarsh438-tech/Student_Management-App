@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -42,6 +43,27 @@ public class CourseServiceImpl implements CourseService {
                 stream().
                 map(course -> modelMapper.map(course, CourseDTO.class)).
                 collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional
+    public CourseDTO getCourseById(UUID id) {
+               Course course=courseRepo.findById(id).orElseThrow(()->new RuntimeException("No course found with id " + id));
+
+        return  modelMapper.map(course, CourseDTO.class) ;
+    }
+
+    @Override
+    public CourseDTO updateCourse(CourseDTO courseDTO, UUID id) {
+        Course course=courseRepo.findById(id).orElseThrow(()->new RuntimeException("No course found with id " + id));
+        modelMapper.map(courseDTO, course);
+        courseRepo.save(course);
+        return modelMapper.map(course, CourseDTO.class);
+    }
+
+    @Override
+    public Boolean existsByCourseCodeAndIdNot(String code, UUID id) {
+        return courseRepo.existsByCourseCodeIgnoreCaseAndIdNot(code, id);
     }
 
 }
